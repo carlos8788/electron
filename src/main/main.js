@@ -1,16 +1,15 @@
 const { app, BrowserWindow } = require('electron')
+const createWindow = require('./window/window.js')
+const connectDatabase = require('./database/connect.js')
+const setupIPC = require('./ipc/avion.ipc.js')
 
-const createWindow = () => {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600
-    })
-
-    win.loadFile('src/renderer/html/index.html')
-}
-
-app.whenReady().then(() => {
-    createWindow()
+app.whenReady().then(async () => {
+    try {
+        await connectDatabase();
+        createWindow()
+    } catch (err) {
+        console.log('Error: ' + err)
+    }
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
@@ -24,3 +23,5 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+
+setupIPC();
