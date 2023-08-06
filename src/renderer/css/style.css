@@ -1,3 +1,18 @@
-h1{
-    color: red;
+:root {
+    --gray: #EEEEEE;
+    --violet-primary: #270570;
+    --violet-secondary: #A780FF;
+    --violet-tertiary: #EBE5F5;
+    --violet-despegar: #550FED;
+    --fake-blue: #4300D2;
+    --dark-gray: #343A3D;
+    --orange: #FA503F;
+
+    --green-dark: #1f3f2a;
+    --green-primary: #20e95d;
+    --green-secondary:#56e784;
+    --green-medium:#098e23;
+    --gray:#45535c;
+    --green-tertiary:#138537;
+ 
 }

@@ -3,6 +3,8 @@ const createWindow = require('./window/window.js')
 const connectDatabase = require('./database/connect.js')
 const setupIPC = require('./ipc/avion.ipc.js')
 
+require('electron-reload')
+
 app.whenReady().then(async () => {
     try {
         await connectDatabase();

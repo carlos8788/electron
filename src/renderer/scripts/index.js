@@ -1,4 +1,11 @@
-console.log('hola ');
-// const container = document.getElementById('container');
+const container = document.getElementById('container');
+import {getAvionesFront} from './renderer.js'
 
-// container.innerHTML = '<h2> Hola desde JS </h2>';
+async function main() {
+    container.innerText = await getAvionesFront();
+}
+main();
+
+
+
+

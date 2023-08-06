@@ -1,14 +1,18 @@
-const container = document.getElementById('container');
+
 
 const { ipcRenderer } = require('electron');
 ipcRenderer.send('getAviones');
 
-let info = 'application'
-ipcRenderer.on('getAvionesResponse', (event, aviones) => {
-    aviones.forEach(avion => {
-        // console.log(avion.dataValues);
-        info += avion.dataValues.modelo
-    })
-    console.log(info);
-    container.innerText = info;
-});
+export const getAvionesFront = () => {
+    return new Promise((resolve) => {
+        ipcRenderer.on('getAvionesResponse', (event, aviones) => {
+            let info = ''
+            aviones.forEach(avion => {
+                info += avion.modelo
+            })
+            
+            console.log(info);
+            resolve(info);
+        });
+    });
+}
